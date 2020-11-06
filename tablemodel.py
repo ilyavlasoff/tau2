@@ -2,6 +2,7 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import *
 import numpy as np
+import math
 
 
 class TableModel(QtCore.QAbstractTableModel):
@@ -37,9 +38,10 @@ class TableModel(QtCore.QAbstractTableModel):
 
     def data(self, index, role):
         if role == Qt.DisplayRole:
-            r = index.row()
-            c = index.column()
-            return self.data_matrix[index.row()][index.column()]
+            try:
+                return round(self.data_matrix[index.row()][index.column()], 2)
+            except TypeError:
+                return self.data_matrix[index.row()][index.column()]
 
     def rowCount(self, index) -> int:
         return self.row_count
@@ -74,7 +76,7 @@ class TableModel(QtCore.QAbstractTableModel):
         return self
 
     def add_row(self, row):
-        self.add_rows(1, row)
+        self.add_rows(1, [row])
 
     def add_rows(self, quantity, rows=[]):
         if quantity > len(rows):
@@ -137,6 +139,15 @@ class TableModel(QtCore.QAbstractTableModel):
         except ValueError:
             self.data_matrix[index.row()][index.column()] = value
         return True
+
+    def clear(self):
+        for i in range(len(self.data_matrix)):
+            self.data_matrix[i].clear()
+        self.data_matrix.clear()
+        self.row_count = 0
+        self.column_count = 0
+        self.header.clear()
+        self.layoutChanged.emit()
 
     def get_data_matrix(self):
         return np.array(self.data_matrix, dtype=object)

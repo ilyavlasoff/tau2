@@ -182,8 +182,12 @@ class NetPlanner:
             self.full_path_founder(self.source, paths_to_event, i)
             paths_to_event.sort(key=lambda x: x['disp'], reverse=True)
             max_disp.append(paths_to_event[0]['disp'])
-        probabilities = [st.norm.cdf((self.events_time_limits[i] - t_early[i]) / math.sqrt(max_disp[i]), 0, 1)
-                         for i in range(1, len(max_disp))]
+        probabilities = []
+        for i in range(len(max_disp)):
+            if max_disp[i] == 0:
+                probabilities.append(0)
+            else:
+                probabilities.append(st.norm.cdf((self.events_time_limits[i] - t_early[i]) / math.sqrt(max_disp[i]), 0, 1))
         return [max_disp, probabilities]
 
 

@@ -14,6 +14,9 @@
    <string>Расчет параметров ТПП</string>
   </property>
   <widget class="QTabWidget" name="tabWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -26,6 +29,9 @@
     <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <attribute name="title">
      <string>Параметры</string>
     </attribute>
@@ -633,6 +639,9 @@
     </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <attribute name="title">
      <string>События</string>
     </attribute>
@@ -661,6 +670,9 @@
     </widget>
    </widget>
    <widget class="QWidget" name="tab_3">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <attribute name="title">
      <string>Работы</string>
     </attribute>
@@ -685,6 +697,58 @@
        <width>601</width>
        <height>481</height>
       </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_4">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <attribute name="title">
+     <string>Резервы времени</string>
+    </attribute>
+    <widget class="QTableView" name="timeReservesTable">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>601</width>
+       <height>481</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>191</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Полные резервы времени</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="ganttTab">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <attribute name="title">
+     <string>Диаграмма Ганта</string>
+    </attribute>
+    <widget class="QLabel" name="imgLabel">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>112</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Нет диаграммы</string>
      </property>
     </widget>
    </widget>
