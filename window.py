@@ -225,8 +225,9 @@ class Window(QtWidgets.QMainWindow):
 
             tasks_properties = []
             for i in range(self.ui.tasksQuantitySpinBox.value()):
-                tasks_properties.append({'start_event': start_events[i], 'term_event': term_events[i],
-                                         'start_time': t_task_early_start[i], 'len': tasks_expected[i]})
+                if tasks_expected[i] != 0:
+                    tasks_properties.append({'start_event': start_events[i], 'term_event': term_events[i],
+                                            'start_time': t_task_early_start[i], 'len': tasks_expected[i]})
             file_diagram = self.draw_plot(tasks_properties)
 
             pixmap = QPixmap(file_diagram)
